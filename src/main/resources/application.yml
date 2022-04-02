@@ -25,10 +25,13 @@ security:
     client:
       client-id: 077eb991-1556-481b-9145-26ded6919fbf
       client-secret: A2i7Q~rIzmbyuSgq-Q4iM55R.kfklTvpIDdNE
-      scope: openid https://graph.microsoft.com/user.read
+#      scope: openid https://graph.microsoft.com/user.read
+      scope: offline_access api://077eb991-1556-481b-9145-26ded6919fbf/web/Consumer.read
       authentication-scheme: header
       client-authentication-scheme: form
       access-token-uri: ${ssoServiceUrl}/oauth2/v2.0/token
       user-authorization-uri: ${ssoServiceUrl}/oauth2/v2.0/authorize
-    issuer: https://login.microsoftonline.com/a42e43e2-c7b8-499c-89a6-4b9bac2d5a6e/v2.0
-    resource.user-info-uri: https://graph.microsoft.com/oidc/userinfo
+    issuer: https://login.microsoftonline.com/a42e43e2-c7b8-499c-89a6-4b9bac2d5a6e/v2.0/token
+#    resource.user-info-uri: https://graph.microsoft.com/oidc/userinfo
+    resource:
+      user-info-uri: https://jwt.ms
