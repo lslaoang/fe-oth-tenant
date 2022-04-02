@@ -3,6 +3,21 @@ logging:
     org:
       springframework: DEBUG
 
+server:
+  error:
+    path: /error
+    whitelabel:
+      enabled: false
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
+
+
+api:
+  base-path: "/api/v1"
+  back-end:
+    verify: "https://testco-app.azurewebsites.net/api/v1/verify"
+
 ssoServiceUrl: https://login.microsoftonline.com/common
 
 security:
