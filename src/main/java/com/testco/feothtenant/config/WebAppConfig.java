@@ -23,7 +23,7 @@ public class WebAppConfig extends WebSecurityConfigurerAdapter {
                 .deleteCookies()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .logoutSuccessUrl("https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A8080");
+                .logoutSuccessUrl("https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=https%3A%2F%2Flocalhost%3A8080");
     }
 
 }
