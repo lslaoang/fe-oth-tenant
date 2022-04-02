@@ -1,0 +1,19 @@
+logging:
+  level:
+    org:
+      springframework: DEBUG
+
+ssoServiceUrl: https://login.microsoftonline.com/common
+
+security:
+  oauth2:
+    client:
+      client-id: 077eb991-1556-481b-9145-26ded6919fbf
+      client-secret: A2i7Q~rIzmbyuSgq-Q4iM55R.kfklTvpIDdNE
+      scope: openid https://graph.microsoft.com/user.read
+      authentication-scheme: header
+      client-authentication-scheme: form
+      access-token-uri: ${ssoServiceUrl}/oauth2/v2.0/token
+      user-authorization-uri: ${ssoServiceUrl}/oauth2/v2.0/authorize
+    issuer: https://login.microsoftonline.com/a42e43e2-c7b8-499c-89a6-4b9bac2d5a6e/v2.0
+    resource.user-info-uri: https://graph.microsoft.com/oidc/userinfo
