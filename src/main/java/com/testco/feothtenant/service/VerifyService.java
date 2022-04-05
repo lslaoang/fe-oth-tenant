@@ -5,12 +5,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+
+import static org.springframework.security.oauth2.client.web.reactive.function.client.ServletOAuth2AuthorizedClientExchangeFilterFunction.oauth2AuthorizedClient;
 
 @Service
 public class VerifyService {
@@ -30,11 +33,12 @@ public class VerifyService {
         String token = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {
-            token = ((OAuth2AuthenticationDetails) authentication.getDetails()).getTokenValue();
+            token = authentication.getDetails().toString();
         }
         return token;
     }
-    public void verify() {
+
+    public void verify(@RegisteredOAuth2AuthorizedClient("facility-request") OAuth2AuthorizedClient authorizedClient) {
         LOGGER.info("Verifying access.");
         URI uri;
         try {
@@ -47,7 +51,8 @@ public class VerifyService {
             webclient
                     .get()
                     .uri(uri)
-                    .headers(httpHeaders -> httpHeaders.setBearerAuth(getToken()))
+//                    .headers(httpHeaders -> httpHeaders.setBearerAuth(getToken()))
+                    .attributes(oauth2AuthorizedClient(authorizedClient))
                     .retrieve()
                     .bodyToMono(String.class)
                     .block();
