@@ -9,10 +9,4 @@ public class FeOthTenantApplication {
     public static void main(String[] args) {
         SpringApplication.run(FeOthTenantApplication.class, args);
     }
-
-//    @Override
-//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-//        return builder.sources(FeOthTenantApplication.class);
-//    }
-
 }

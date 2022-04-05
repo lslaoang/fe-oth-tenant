@@ -3,10 +3,7 @@ package com.testco.feothtenant.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -29,16 +26,7 @@ public class VerifyService {
         this.webclient = webclient;
     }
 
-    private static String getToken() {
-        String token = null;
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            token = authentication.getDetails().toString();
-        }
-        return token;
-    }
-
-    public void verify(@RegisteredOAuth2AuthorizedClient("facility-request") OAuth2AuthorizedClient authorizedClient) {
+    public void verify(OAuth2AuthorizedClient authorizedClient) {
         LOGGER.info("Verifying access.");
         URI uri;
         try {
@@ -51,7 +39,6 @@ public class VerifyService {
             webclient
                     .get()
                     .uri(uri)
-//                    .headers(httpHeaders -> httpHeaders.setBearerAuth(getToken()))
                     .attributes(oauth2AuthorizedClient(authorizedClient))
                     .retrieve()
                     .bodyToMono(String.class)

@@ -18,6 +18,7 @@ public class WebAppConfig extends AADWebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/secure_page").authenticated()
                 .antMatchers("/**").permitAll();
+        // @formatter:on
     }
 
 }
