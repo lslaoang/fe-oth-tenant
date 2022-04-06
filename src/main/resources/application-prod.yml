@@ -1,0 +1,27 @@
+api:
+  back-end:
+    verify: "https://testco-app.azurewebsites.net/api/v1/verify"
+
+azure:
+  activedirectory:
+    client-id: cd163353-08c0-4cba-9299-58635fc1867e
+    client-secret: KQ27Q~iuOowznMaRvwsIRuyczajp3DUcdw7U6
+    tenant-id: a42e43e2-c7b8-499c-89a6-4b9bac2d5a6e
+    authorization-clients:
+      graph:
+        scopes: https://graph.microsoft.com/User.Read
+      testco-webapp:
+        scopes:
+          - api://testco-webapp/Consumer.read
+          - openid
+          - profile
+          - offline_access
+
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+    com:
+      azure:
+        spring: TRACE
