@@ -28,7 +28,6 @@ public class VerifyService {
 
     public void verify(OAuth2AuthorizedClient authorizedClient) {
         LOGGER.info("Verifying access.");
-        System.out.println(authorizedClient.getAccessToken().getTokenValue());
         URI uri;
         try {
             uri = new URI(backEndLink);
