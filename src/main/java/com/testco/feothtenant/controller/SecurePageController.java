@@ -1,7 +1,6 @@
 package com.testco.feothtenant.controller;
 
 import com.testco.feothtenant.service.VerifyService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.stereotype.Controller;
@@ -11,8 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SecurePageController {
 
-    @Autowired
-    VerifyService verifyService;
+    private final VerifyService verifyService;
+
+    public SecurePageController(VerifyService verifyService) {
+        this.verifyService = verifyService;
+    }
 
     @RequestMapping("/secure_page")
     public ModelAndView securePage() {
