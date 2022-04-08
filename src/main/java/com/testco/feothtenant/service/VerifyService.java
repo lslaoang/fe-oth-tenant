@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 
 import static org.springframework.security.oauth2.client.web.reactive.function.client.ServletOAuth2AuthorizedClientExchangeFilterFunction.oauth2AuthorizedClient;
 
@@ -28,17 +27,10 @@ public class VerifyService {
 
     public void verify(OAuth2AuthorizedClient authorizedClient) {
         LOGGER.info("Verifying access.");
-        URI uri;
-        try {
-            uri = new URI(backEndLink);
-        } catch (URISyntaxException e) {
-            throw new VerificationException("Unable to create URI. {}", e);
-        }
-
         try {
             webclient
                     .get()
-                    .uri(uri)
+                    .uri(new URI(backEndLink))
                     .attributes(oauth2AuthorizedClient(authorizedClient))
                     .retrieve()
                     .bodyToMono(String.class)
