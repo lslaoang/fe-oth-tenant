@@ -1,6 +1,10 @@
 api:
-  back-end:
-    verify: "http://localhost:8088/api/v1/verify"
+  provider:
+    intune:
+      base-uri: http://localhost:8088
+      endpoint: /api/v1/verify
+server:
+  port: 8680
 
 azure:
   activedirectory:

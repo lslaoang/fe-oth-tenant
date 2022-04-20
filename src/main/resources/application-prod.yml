@@ -1,6 +1,8 @@
 api:
-  back-end:
-    verify: "https://testco-app.azurewebsites.net/api/v1/verify"
+  provider:
+    intune:
+      base-uri: https://testco-app.azurewebsites.net
+      endpoint: api/v1/verify
 
 azure:
   activedirectory:

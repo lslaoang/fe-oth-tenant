@@ -18,8 +18,11 @@ public class VerifyService {
 
     private final WebClient webclient;
 
-    @Value("${api.backend.verify}")
-    String backEndLink;
+    @Value("${api.provider.intune.base-uri}")
+    String intuneBaseUri;
+
+    @Value("${api.provider.intune.endpoint}")
+    String intuneEndpoint;
 
     public VerifyService(WebClient webclient) {
         this.webclient = webclient;
@@ -30,7 +33,7 @@ public class VerifyService {
         try {
             webclient
                     .get()
-                    .uri(new URI(backEndLink))
+                    .uri(new URI(intuneBaseUri + intuneEndpoint))
                     .attributes(oauth2AuthorizedClient(authorizedClient))
                     .retrieve()
                     .bodyToMono(String.class)
