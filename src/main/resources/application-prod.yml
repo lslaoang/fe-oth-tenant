@@ -2,7 +2,7 @@ api:
   provider:
     intune:
       base-uri: https://testco-app.azurewebsites.net
-      endpoint: api/v1/verify
+      endpoint: /api/v1/verify
 
 azure:
   activedirectory:
