@@ -8,3 +8,12 @@ spring:
     exclude: org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
   profiles:
     active: local
+
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+    com:
+      azure:
+        spring: TRACE

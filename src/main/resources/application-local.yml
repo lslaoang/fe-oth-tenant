@@ -29,12 +29,3 @@ azure:
           - api://testco-fe2/File.Scan
           - offline_access
 #          - api://testco-webapp/Consumer.read
-
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG
-    com:
-      azure:
-        spring: DEBUG
