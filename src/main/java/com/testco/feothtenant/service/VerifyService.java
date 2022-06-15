@@ -29,18 +29,24 @@ public class VerifyService {
     }
 
     public void verify(OAuth2AuthorizedClient authorizedClient) {
+        authorizedClient.getAccessToken();
         LOGGER.info("Verifying access.");
         try {
             webclient
                     .get()
                     .uri(new URI(intuneBaseUri + intuneEndpoint))
                     .attributes(oauth2AuthorizedClient(authorizedClient))
+//                    .attributes(clientRegistrationId("testco-webapp"))
                     .retrieve()
                     .bodyToMono(String.class)
                     .block();
+            System.out.println(authorizedClient.getAccessToken().getTokenValue());
+
         } catch (Exception e) {
             LOGGER.error("Verification failed.");
             throw new VerificationException("Error occurred calling back-end URI.", e);
         }
+
+
     }
 }

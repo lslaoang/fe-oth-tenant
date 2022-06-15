@@ -8,8 +8,10 @@ server:
 
 azure:
   activedirectory:
-    client-id: cd163353-08c0-4cba-9299-58635fc1867e
-    client-secret: KQ27Q~iuOowznMaRvwsIRuyczajp3DUcdw7U6
+#    client-id: cd163353-08c0-4cba-9299-58635fc1867e
+#    client-secret: KQ27Q~iuOowznMaRvwsIRuyczajp3DUcdw7U6
+    client-id: 2f01c547-7798-433d-a2b2-1970f6c4cd0a
+    client-secret: Vb18Q~W~woX30xXp9tA6SXgAdXbNVZemJCuaZcyd
     tenant-id: a42e43e2-c7b8-499c-89a6-4b9bac2d5a6e
     authorization-clients:
       graph:
@@ -20,6 +22,13 @@ azure:
           - openid
           - profile
           - offline_access
+      testco-fe:
+        scopes: 
+          - openid
+          - profile
+          - api://testco-fe2/File.Scan
+          - offline_access
+#          - api://testco-webapp/Consumer.read
 
 logging:
   level:

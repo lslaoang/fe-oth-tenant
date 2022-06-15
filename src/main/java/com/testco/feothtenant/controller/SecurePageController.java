@@ -29,6 +29,7 @@ public class SecurePageController {
     @RequestMapping("/verify")
     public ModelAndView verifyMe(@RegisteredOAuth2AuthorizedClient("testco-webapp")
                                          OAuth2AuthorizedClient authorizedClient) {
+        System.out.println(authorizedClient.getAccessToken().getTokenValue());
         verifyService.verify((authorizedClient));
         return new ModelAndView("welcome");
 
