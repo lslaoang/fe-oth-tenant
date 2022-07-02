@@ -29,12 +29,15 @@ public class VerifyService {
     }
 
     public void verify(OAuth2AuthorizedClient authorizedClient) {
+        String versionHeader = "X-UBS-APP-VERSION";
+        String versionHeaderValue = "1.2.1";
         authorizedClient.getAccessToken();
         LOGGER.info("Verifying access.");
         try {
             webclient
                     .get()
                     .uri(new URI(intuneBaseUri + intuneEndpoint))
+                    .header(versionHeader, versionHeaderValue)
                     .attributes(oauth2AuthorizedClient(authorizedClient))
 //                    .attributes(clientRegistrationId("testco-webapp"))
                     .retrieve()
