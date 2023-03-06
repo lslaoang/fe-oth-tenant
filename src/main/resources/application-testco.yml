@@ -1,0 +1,19 @@
+api:
+  provider:
+    intune:
+      base-uri: http://localhost:8088
+      endpoint: /api/v1/verify
+server:
+  port: 8680
+
+azure:
+  activedirectory:
+    client-id: cce2198c-342d-4f83-8edb-f1337a4a0012
+    client-secret: .sO8Q~XFTWU9VGVN100B.dCLDvQyxiwbR1Ke3bSn
+    tenant-id: 4d331f3c-5038-4f14-9c4c-9cf4d42600cf
+    authorization-clients:
+      graph:
+        scopes: https://graph.microsoft.com/User.Read
+      testco-webapp:
+        scopes:
+          - api://testco-webapp/Consumer.read
