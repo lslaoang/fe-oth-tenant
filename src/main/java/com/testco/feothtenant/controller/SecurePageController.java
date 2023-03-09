@@ -18,6 +18,7 @@ public class SecurePageController {
 
     @RequestMapping("/secure_page")
     public ModelAndView securePage() {
+        //TODO: implement validation on the request
         return new ModelAndView("secure_page");
     }
 
