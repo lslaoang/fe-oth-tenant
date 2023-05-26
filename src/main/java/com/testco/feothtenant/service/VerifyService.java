@@ -37,7 +37,7 @@ public class VerifyService {
             webclient
                     .get()
                     .uri(new URI(intuneBaseUri + intuneEndpoint))
-                    .header(versionHeader, versionHeaderValue)
+//                    .header(versionHeader, versionHeaderValue)
                     .attributes(oauth2AuthorizedClient(authorizedClient))
 //                    .attributes(clientRegistrationId("testco-webapp"))
                     .retrieve()

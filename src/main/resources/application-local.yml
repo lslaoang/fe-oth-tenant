@@ -2,7 +2,7 @@ api:
   provider:
     intune:
       base-uri: http://localhost:8088
-      endpoint: /api/v1/verify
+      endpoint: /api/v1/intune/verify
 server:
   port: 8680
 
